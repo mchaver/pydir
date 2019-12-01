@@ -26,7 +26,8 @@ def match_format_green(matchobj):
 
 def get_path(path, regex_str):
     """
-    Provide a directory path whose contents you want to query.
+    Provide a directory path in which you want to query the contents of its 
+    files and a regex query.
     """
     regex = re.compile(regex_str, flags=re.IGNORECASE)
 
@@ -37,6 +38,7 @@ def get_path(path, regex_str):
             for f in files:
                 with f.open() as fstream:
                     for i, line in enumerate(fstream.readlines()):
+                        # remove trailing new line char on the right hand side
                         line = line.rstrip('\n')
                         if regex.search(line):
                             relative_path = str(f)
@@ -50,6 +52,7 @@ def get_path(path, regex_str):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Search for PATTERN in each FILE or standard input.', add_help=True)
     parser.add_argument('query', type=str, nargs=2, help='the regexp query')
+
     # vars() returns __dict__
     args = vars(parser.parse_args())
     
