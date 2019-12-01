@@ -1,7 +1,6 @@
-# pydir
+# pyreview
 
-A collection of sample programs that handle files and filesystems in Python.
-I wrote these 
+A collection of toy programs to review knowledge of python3.8.
 
 ## pygrep
 
